@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require("stylus").middleware({
     src: __dirname + "/stylus/",
-    dest: __dirname + "/../bygdeforskarna/"
+    dest: __dirname + "/../bygdeforskarna.github.io/"
   }));
-app.use(express.static(path.join(__dirname, "../bygdeforskarna")));
+app.use(express.static(path.join(__dirname, "../bygdeforskarna.github.io")));
 app.use("/bower_components", express.static(path.join(__dirname, "/bower_components")));
 
 // catch 404 and forward to error handler

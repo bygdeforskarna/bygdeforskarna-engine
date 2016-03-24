@@ -17,7 +17,7 @@ var metalsmith = Metalsmith(__dirname + "/../");
 metalsmith
     .clean(false)
     .source("src/")
-    .destination("../bygdeforskarna/")
+    .destination("../bygdeforskarna.github.io/")
     .use(collections({
         blogposts: {
             sortBy: 'date',
