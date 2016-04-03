@@ -3,9 +3,23 @@ title: Fun with maps
 layout: bygdeforskarna.hbt
 ---
 <h1>Fun with maps</h1>
-<div id="map" style="height: 180px;"></div>
+<div id="map" style="height: 550px;"></div>
 <script>
+  var map;
+  var bottomLayer;
+  var hjalm1840Layer;
+
   function initMaps() {
-    var mymap = L.map("map").setView([51.505, -0.09], 13);
-  };
+    L.mapbox.accessToken = "pk.eyJ1IjoiZ29sZWVncmVlcyIsImEiOiJjaW02cnZ3aG0wMDAwd29rbnFud2Nob3o5In0.KAnEl2Tr3ywbrO1VaZRAXA";
+    bottomLayer = L.tileLayer("https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=" + L.mapbox.accessToken, {
+        attribution: "© <a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+    });
+    hjalm1840Layer = L.tileLayer("https://api.mapbox.com/v4/goleegrees.7fk72ysj/{z}/{x}/{y}.png?access_token=" + L.mapbox.accessToken);
+
+    map = L.map("map")
+        .addLayer(bottomLayer)
+        .setView(new L.LatLng(57.494, 12.172),16);
+
+    L.control.layers(null, { "Hjälm 1840":hjalm1840Layer }).addTo(map);
+  }
 </script>
